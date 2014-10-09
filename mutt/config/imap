@@ -1,0 +1,13 @@
+# -*- mode: muttrc -*-
+# vi: set ft=muttrc :
+
+set imap_check_subscribed
+
+unset imap_passive
+set imap_keepalive = 300
+
+set mail_check = 120
+unset record
+
+set imap_user = $my_user
+set imap_pass = $my_pass

@@ -1,0 +1,5 @@
+source ~/.mutt/accounts/gmail.ignore
+
+source ~/.mutt/config/base
+source ~/.mutt/config/imap
+source ~/.mutt/config/colors

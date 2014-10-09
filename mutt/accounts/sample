@@ -1,0 +1,10 @@
+# -*- mode: muttrc -*-
+# vi: set ft=muttrc :
+
+set my_name = "Andre Souza"
+set my_user = my-email-address
+set my_pass = my-password
+
+set folder = imaps://my-imap-server/
+set spoolfile = +INBOX
+set smtp_url = smtps://$my_user:$my_pass@my-smtp-server

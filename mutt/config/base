@@ -1,0 +1,29 @@
+# -*- mode: muttrc -*-
+# vi: set ft=muttrc :
+
+set editor       = vim
+set sort         = threads
+set sort_browser = reverse-date
+set sort_aux     = reverse-last-date-received
+
+set mailcap_path = ~/.mutt/config/mailcap
+set mime_forward
+auto_view text/html
+
+bind index gg      first-entry
+bind index G       last-entry
+bind index !       sync-mailbox
+bind index <space> collapse-thread
+
+set quote_regexp = "^( {0,4}[>|:#%]| {0,4}[a-z0-9]+[>|]+)+"
+alternative_order text/plain text/enriched text/html
+
+set header_cache = ~/.cache/mutt
+set message_cachedir = ~/.cache/mutt
+
+set realname = $my_name
+set from = $my_user
+set use_from = yes
+
+set ssl_force_tls = yes
+set ssl_starttls = yes

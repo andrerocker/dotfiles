@@ -1,0 +1,68 @@
+!!! This enables transparency.
+URxvt*.depth: 32
+URxvt*.buffered: false
+URxvt*.transparent: true
+URxvt*.shading: 15
+
+!!! This disables the scroll bar.
+URxvt.scrollBar: false
+
+!!! This enables the scroll wheel for scrolling.
+URxvt.secondaryScroll: true
+
+!!! Colors
+URxvt.foreground: white
+URxvt.background: rgba:0000/0000/0800/c200
+
+! black
+URxvt.color0  : #2E3436
+URxvt.color8  : #555753
+! red
+URxvt.color1  : #CC0000
+URxvt.color9  : #EF2929
+! etc
+
+!!! Font
+URxvt.font: xft:monospace:pixelsize=14
+URxvt.boldFont: xft:monospace:bold:pixelsize=14
+
+!!! enabling clickable links:
+URxvt.urlLauncher:      /usr/bin/firefox
+URxvt.matcher.button:   1
+
+URxvt*.color0:  #2E3436
+URxvt*.color1:  #a40000
+URxvt*.color2:  #4E9A06
+URxvt*.color3:  #C4A000
+URxvt*.color4:  #3465A4
+URxvt*.color5:  #75507B
+URxvt*.color6:  #ce5c00
+URxvt*.color7:  #babdb9
+URxvt*.color8:  #555753
+URxvt*.color9:  #EF2929
+URxvt*.color10: #8AE234
+URxvt*.color11: #FCE94F
+URxvt*.color12: #729FCF
+URxvt*.color13: #AD7FA8
+URxvt*.color14: #fcaf3e
+URxvt*.color15: #EEEEEC
+
+!-- Xft settings -- !
+Xft.dpi:        120
+Xft.antialias:  true
+Xft.rgba:       rgb
+Xft.hinting:    true
+Xft.hintstyle:  hintfull
+
+! -- Fonts -- !ddd
+URxvt.font:xft:Monospace:pixelsize=13
+URxvt.boldfont:xft:Monospace-Bold:pixelsize=13
+
+!- Xft settings -- !
+Xft.dpi:        96
+Xft.antialias:  true
+Xft.rgba:       rgb
+Xft.hinting:    true
+Xft.hintstyle:  hintslight
+
+URxvt*visualBell: true

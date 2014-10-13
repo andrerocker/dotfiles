@@ -1,5 +1,4 @@
 -- Standard awesome library
-
 local gears = require("gears")
 local awful = require("awful")
 awful.rules = require("awful.rules")
@@ -20,6 +19,7 @@ local menubar = require("menubar")
 os.execute("setxkbmap -model abnt2 -layout br -variant abnt2")
 awful.util.spawn_with_shell("mutt")
 awful.util.spawn_with_shell("urxvt -e tmux")
+awful.util.spawn_with_shell("xscreensaver -nosplash")
 
 -- {{{ Error handling
 -- Check if awesome encountered an error during startup and fell back to
@@ -272,6 +272,9 @@ globalkeys = awful.util.table.join(
 
     -- Prompt
     awful.key({ modkey },            "r",     function () mypromptbox[mouse.screen]:run() end),
+
+    -- Lock Screen
+    awful.key({ modkey, "Control" }, "l", function () awful.util.spawn("xscreensaver-command -lock") end),
 
     awful.key({ modkey }, "x",
               function ()

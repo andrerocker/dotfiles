@@ -481,8 +481,8 @@ end
 
 -- configuration - edit to your liking
 wp_index = 1
-wp_timeout  = 10
-wp_path = "/home/andrerocker/.config/awesome/wallpapers"
+wp_timeout  = 120
+wp_path = "/home/andrerocker/.config/awesome/wallpapers/"
 wp_filter = function(s) return string.match(s,"%.png$") or string.match(s,"%.jpg$") end
 wp_files = scandir(wp_path, wp_filter)
 

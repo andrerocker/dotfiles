@@ -1,4 +1,4 @@
-# andrerocker's dotfiles
+## andrerocker's dotfiles
 
 * mutt
 * urxvt

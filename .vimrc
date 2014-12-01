@@ -1,15 +1,6 @@
 set nocompatible 
 filetype off
-
-set background=dark
-set t_Co=16
 set rtp+=~/.vim/bundle/Vundle.vim
-set number
-
-set guioptions-=m  "remove menu bar
-set guioptions-=T  "remove toolbar
-set guioptions-=r  "remove right-hand scroll bar
-set guioptions-=L  "remove left-hand scroll bar
 
 call vundle#begin()
 	Plugin 'gmarik/Vundle.vim'
@@ -17,7 +8,7 @@ call vundle#begin()
 	Plugin 'bling/vim-airline'
 	Plugin 'myusuf3/numbers.vim'
 	Plugin 'scrooloose/nerdtree'
-	Plugin 'fatih/vim-go'
+	" Plugin 'fatih/vim-go'
 	Plugin 'vim-scripts/bash-support.vim'
 	Plugin 'vim-scripts/nginx.vim'
 	Plugin 'honza/dockerfile.vim'
@@ -25,11 +16,19 @@ call vundle#begin()
 	Plugin 'tpope/vim-rails'
 	Plugin 'tpope/vim-bundler'
 	Plugin 'vim-ruby/vim-ruby'
+	Plugin 'nathanaelkane/vim-indent-guides'
+	Plugin 'flazz/vim-colorschemes'
 call vundle#end()
 
-colorscheme codeschool
 filetype plugin indent on
-map <silent> <C-n> :NERDTreeToggle<CR>
 
-silent !wmctrl -r :ACTIVE: -b add,fullscreen
-syntax on
+set guioptions-=m
+set guioptions-=T
+set guioptions-=r
+set guioptions-=L
+set background=dark
+set number
+
+colorscheme codeschool
+map <silent> <C-n> :NERDTreeToggle<CR>
+autocmd FileType ruby,yml,html,eruby setlocal expandtab shiftwidth=2 softtabstop=2

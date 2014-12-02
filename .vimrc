@@ -32,3 +32,4 @@ set number
 colorscheme codeschool
 map <silent> <C-n> :NERDTreeToggle<CR>
 autocmd FileType ruby,yml,html,eruby setlocal expandtab shiftwidth=2 softtabstop=2
+syntax on

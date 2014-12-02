@@ -17,6 +17,8 @@ local menubar = require("menubar")
 
 -- Custom Stuff
 os.execute("setxkbmap -model abnt2 -layout br -variant abnt2")
+os.execute("wmname \"LG3D\"") -- to solve weird java behevour
+
 -- awful.util.spawn_with_shell("ssh-agent tmux new-session -d")
 awful.util.spawn_with_shell("ssh-agent urxvt -e tmux")
 awful.util.spawn_with_shell("xscreensaver -nosplash")

@@ -8,7 +8,7 @@ call vundle#begin()
 	Plugin 'bling/vim-airline'
 	Plugin 'myusuf3/numbers.vim'
 	Plugin 'scrooloose/nerdtree'
-	" Plugin 'fatih/vim-go'
+	Plugin 'fatih/vim-go'
 	Plugin 'vim-scripts/bash-support.vim'
 	Plugin 'vim-scripts/nginx.vim'
 	Plugin 'honza/dockerfile.vim'
@@ -29,7 +29,11 @@ set guioptions-=L
 set background=dark
 set number
 
-colorscheme codeschool
+
+if has("gui_running")
+	colorscheme codeschool
+endif
+
 map <silent> <C-n> :NERDTreeToggle<CR>
 autocmd FileType ruby,yml,html,eruby setlocal expandtab shiftwidth=2 softtabstop=2
 syntax on

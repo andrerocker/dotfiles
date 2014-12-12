@@ -23,8 +23,9 @@ URxvt.color9  : #EF2929
 ! etc
 
 !!! Font
-URxvt.font: xft:monospace:pixelsize=14
-URxvt.boldFont: xft:monospace:bold:pixelsize=14
+urxvt*font: xft:monospace:pixelsize=14,xft:Inconsolata\ for\ Powerline:pixelsize=12
+            xft:PowerlineSymbols:pixelsize=14:antialias=true
+
 
 !!! enabling clickable links:
 URxvt.urlLauncher:      /usr/bin/firefox
@@ -54,15 +55,10 @@ Xft.rgba:       rgb
 Xft.hinting:    true
 Xft.hintstyle:  hintfull
 
-! -- Fonts -- !ddd
-URxvt.font:xft:Monospace:pixelsize=13
-URxvt.boldfont:xft:Monospace-Bold:pixelsize=13
-
 !- Xft settings -- !
 Xft.dpi:        96
 Xft.antialias:  true
 Xft.rgba:       rgb
 Xft.hinting:    true
 Xft.hintstyle:  hintslight
-
-URxvt*visualBell: true
+URxvt*visualBell: false

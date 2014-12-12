@@ -2,6 +2,8 @@ set nocompatible
 filetype off
 set rtp+=~/.vim/bundle/Vundle.vim
 
+let g:airline_powerline_fonts = 1
+
 call vundle#begin()
 	Plugin 'gmarik/Vundle.vim'
 	Plugin 'kien/ctrlp.vim'

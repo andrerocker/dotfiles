@@ -37,5 +37,5 @@ if has("gui_running")
 endif
 
 map <silent> <C-n> :NERDTreeToggle<CR>
-autocmd FileType ruby,yml,html,eruby setlocal expandtab shiftwidth=2 softtabstop=2
+autocmd FileType ruby,yml,html,eruby,yaml setlocal expandtab shiftwidth=2 softtabstop=2
 syntax on

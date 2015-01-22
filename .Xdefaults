@@ -23,9 +23,8 @@ URxvt.color9  : #EF2929
 ! etc
 
 !!! Font
-urxvt*font: xft:monospace:pixelsize=14,xft:Inconsolata\ for\ Powerline:pixelsize=12
-            xft:PowerlineSymbols:pixelsize=14:antialias=true
-
+URxvt.font: xft:monospace:pixelsize=12
+URxvt.boldFont: xft:monospace:bold:pixelsize=12
 
 !!! enabling clickable links:
 URxvt.urlLauncher:      /usr/bin/firefox

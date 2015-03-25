@@ -2,6 +2,7 @@ set nocompatible
 filetype off
 set rtp+=~/.vim/bundle/Vundle.vim
 
+let NERDTreeShowHidden = 1
 let g:airline_powerline_fonts = 1
 
 call vundle#begin()
@@ -37,5 +38,5 @@ if has("gui_running")
 endif
 
 map <silent> <C-n> :NERDTreeToggle<CR>
-autocmd FileType ruby,yml,html,eruby,yaml setlocal expandtab shiftwidth=2 softtabstop=2
+autocmd FileType ruby,yml,html,eruby,yaml,sh setlocal expandtab shiftwidth=2 softtabstop=2
 syntax on

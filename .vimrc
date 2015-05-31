@@ -21,6 +21,7 @@ call vundle#begin()
 	Plugin 'vim-ruby/vim-ruby'
 	Plugin 'nathanaelkane/vim-indent-guides'
 	Plugin 'flazz/vim-colorschemes'
+	Plugin 'markcornick/vim-terraform'
 call vundle#end()
 
 filetype plugin indent on
@@ -32,11 +33,8 @@ set guioptions-=L
 set background=dark
 set number
 
-
-if has("gui_running")
-	colorscheme codeschool
-endif
+colorscheme codeschool
 
 map <silent> <C-n> :NERDTreeToggle<CR>
-autocmd FileType ruby,yml,html,eruby,yaml,sh setlocal expandtab shiftwidth=2 softtabstop=2
+autocmd FileType ruby,yml,html,eruby,yaml,sh,terraform setlocal expandtab shiftwidth=2 softtabstop=2
 syntax on

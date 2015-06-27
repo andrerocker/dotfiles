@@ -67,3 +67,6 @@
   (window-configuration-to-register :magit-fullscreen)
   ad-do-it
   (delete-other-windows))
+
+(require 'switch-window)
+(global-set-key (kbd "C-x o") 'switch-window)

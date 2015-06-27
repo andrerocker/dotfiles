@@ -22,7 +22,7 @@ os.execute("wmname \"LG3D\"") -- to solve weird java behevour
 -- awful.util.spawn_with_shell("ssh-agent tmux new-session -d")
 awful.util.spawn_with_shell("ssh-agent urxvt -e tmux")
 awful.util.spawn_with_shell("xscreensaver -nosplash")
-awful.util.spawn_with_shell("firefox")
+awful.util.spawn_with_shell("chromium")
 
 -- {{{ Error handling
 -- Check if awesome encountered an error during startup and fell back to
@@ -227,6 +227,7 @@ globalkeys = awful.util.table.join(
 
     -- Standard program
     awful.key({ modkey,           }, "Return", function () awful.util.spawn(terminal) end),
+    awful.key({ modkey,           }, "space", function () awful.util.spawn("/usr/bin/synapse") end),
     awful.key({ modkey, "Control" }, "r", awesome.restart),
     awful.key({ modkey, "Shift"   }, "q", awesome.quit),
 

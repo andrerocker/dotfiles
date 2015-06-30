@@ -25,13 +25,29 @@
 (menu-bar-mode -99)
 (tool-bar-mode -1)
 (scroll-bar-mode -1)
-(set-face-attribute 'default nil :height 140)
+(set-face-attribute 'default nil :height 120)
 
 (add-hook 'prog-mode-hook 'linum-mode)
 (setq linum-format "%4d ")
 (winner-mode 1)
 (fset 'yes-or-no-p 'y-or-n-p)
 
+
+(setq
+ ;; default directory
+ default-directory (concat (getenv "HOME") "/andre/work/")
+
+ ;; disable backup files
+ make-backup-files nil
+ auto-save-default nil
+ backup-inhibited t
+
+ ;; If a frame alredy opened, use it!
+ display-buffer-reuse-frames t
+)
+
+;; make indentation commands use space only
+(setq-default indent-tabs-mode nil)
 
 ;;
 ;; Packages Settings
@@ -40,7 +56,8 @@
 (require 'package)
 (add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/") t)
 
-(defvar my-packages '(solarized-theme helm helm-projectile magit))
+(defvar my-packages
+  '(solarized-theme magit projectile helm helm-ag helm-projectile helm-fuzzy-find nyan-mode))
 
 (package-initialize)
 (custom-set-faces
@@ -50,7 +67,8 @@
  ;; If there is more than one, they won't work right.
  )
 
-;; package loading (stolen from brunneca, that stoled from chuck, that stoled from milhouse)
+;; package loading (stolen from brunneca, that stoled from chuck,
+;; that stoled from milhouse)
 (setq packaged-contents-refreshed-p nil)
 (dolist (p my-packages)
   (when (not (package-installed-p p))
@@ -64,6 +82,11 @@
 
 (load-theme 'solarized-dark)
 (setq magit-last-seen-setup-instructions "1.4.0")
+
+
+;;
+;; Custom Plugin Settings
+;;
 
 (require 'helm-config)
 (helm-mode t)
@@ -83,3 +106,17 @@
 (require 'projectile)
 (projectile-global-mode)
 (global-set-key (kbd "C-x f") 'helm-projectile)
+(setq projectile-enable-caching t)
+
+(setq projectile-completion-system 'helm)
+(setq projectile-switch-project-action 'helm-projectile)
+(setq helm-projectile-sources-list '(helm-source-projectile-buffers-list
+				     helm-source-projectile-files-list))
+
+;; (defvar default-project-source
+;;  (path-join *user-home-directory* "andre/work"))
+
+(require 'nyan-mode)
+(nyan-mode)
+
+(require 'helm-fuzzy-find)

@@ -20,10 +20,10 @@ os.execute("setxkbmap -model abnt2 -layout br -variant abnt2")
 os.execute("wmname \"LG3D\"") -- to solve weird java behevour
 
 -- awful.util.spawn_with_shell("ssh-agent tmux new-session -d")
-awful.util.spawn_with_shell("ssh-agent urxvt -e tmux")
+-- -- -- -- -- -- -- -- -- awful.util.spawn_with_shell("ssh-agent urxvt -e tmux")
 awful.util.spawn_with_shell("xscreensaver -nosplash")
 awful.util.spawn_with_shell("chromium")
-awful.util.spawn_with_shell("emacs")
+awful.util.spawn_with_shell("ssh-agent emacs")
 
 -- {{{ Error handling
 -- Check if awesome encountered an error during startup and fell back to

@@ -23,6 +23,7 @@ os.execute("wmname \"LG3D\"") -- to solve weird java behevour
 awful.util.spawn_with_shell("ssh-agent urxvt -e tmux")
 awful.util.spawn_with_shell("xscreensaver -nosplash")
 awful.util.spawn_with_shell("chromium")
+awful.util.spawn_with_shell("emacs")
 
 -- {{{ Error handling
 -- Check if awesome encountered an error during startup and fell back to

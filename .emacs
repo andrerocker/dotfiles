@@ -25,13 +25,12 @@
 (menu-bar-mode -99)
 (tool-bar-mode -1)
 (scroll-bar-mode -1)
-(set-face-attribute 'default nil :height 120)
+(set-face-attribute 'default nil :height 100)
 
 (add-hook 'prog-mode-hook 'linum-mode)
 (setq linum-format "%4d ")
 (winner-mode 1)
 (fset 'yes-or-no-p 'y-or-n-p)
-
 
 (setq
  ;; default directory
@@ -48,6 +47,9 @@
 
 ;; make indentation commands use space only
 (setq-default indent-tabs-mode nil)
+
+(setq explicit-shell-file-name "/bin/zica")
+(display-time-mode)
 
 ;;
 ;; Packages Settings
@@ -113,10 +115,47 @@
 (setq helm-projectile-sources-list '(helm-source-projectile-buffers-list
 				     helm-source-projectile-files-list))
 
+;; Stolen from mimi
+
+(defvar rr/project-sources
+  '("~/andre/work/andrerocker/"
+    "~/andre/work/locaweb/"))
+
+(defvar rr/default-file-regexps
+  '("Gemfile$"
+    "README"))
+
+(defun rr/helm-open-project ()
+  "Bring up a Project search interface in helm."
+  (interactive)
+  (helm :sources '(rr/helm-open-project--source)
+	:buffer "*helm-list-projects*"))
+
+(defvar rr/helm-open-project--source
+  '((name . "Open Project")
+    (delayed)
+    (candidates . rr/list-projects)
+    (action . rr/open-project)))
+
+(defun rr/list-projects ()
+  "Lists all projects given project sources."
+  (->> rr/project-sources
+       (-filter 'file-exists-p)
+       (-mapcat (lambda (dir) (directory-files dir t directory-files-no-dot-files-regexp)))))
+
+(defun rr/open-project (path)
+  "Open project available at PATH."
+  (let* ((candidates (-mapcat (lambda (d) (directory-files path t d)) rr/default-file-regexps))
+         (elected (car candidates)))
+    (find-file (or elected path))))
+
 ;; (defvar default-project-source
 ;;  (path-join *user-home-directory* "andre/work"))
 
 (require 'nyan-mode)
 (nyan-mode)
 
-(require 'helm-fuzzy-find)
+;; (require 'helm-fuzzy-find)
+
+;; (global-set-key "\C-x\ a" '(lambda ()(interactive)(ansi-term "/bin/zica")))
+(global-set-key (kbd "C-x C-a") '(lambda ()(interactive)(ansi-term "/bin/zica")))

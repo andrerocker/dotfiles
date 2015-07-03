@@ -59,7 +59,7 @@
 (add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/") t)
 
 (defvar my-packages
-  '(solarized-theme magit projectile helm helm-ag helm-projectile helm-fuzzy-find nyan-mode))
+  '(solarized-theme magit projectile helm helm-ag helm-projectile helm-fuzzy-find nyan-mode company))
 
 (package-initialize)
 (custom-set-faces
@@ -155,7 +155,5 @@
 (require 'nyan-mode)
 (nyan-mode)
 
-;; (require 'helm-fuzzy-find)
-
-;; (global-set-key "\C-x\ a" '(lambda ()(interactive)(ansi-term "/bin/zica")))
 (global-set-key (kbd "C-x C-a") '(lambda ()(interactive)(ansi-term "/bin/zica")))
+(add-hook 'after-init-hook 'global-company-mode)

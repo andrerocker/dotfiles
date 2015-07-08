@@ -157,3 +157,10 @@
 
 (global-set-key (kbd "C-x C-a") '(lambda ()(interactive)(ansi-term "/bin/zica")))
 (add-hook 'after-init-hook 'global-company-mode)
+
+(global-set-key (kbd "C-c u") (lambda (&optional arg) (interactive "P") (move-beginning-of-line arg) (kill-line)))`
+
+(add-hook 'before-save-hook
+          (lambda ()
+            (when (not (derived-mode-p 'markdown-mode))
+              (delete-trailing-whitespace))))

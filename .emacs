@@ -156,6 +156,8 @@
 (nyan-mode)
 
 (global-set-key (kbd "C-x C-a") '(lambda ()(interactive)(ansi-term "/bin/zica")))
+(setq term-buffer-maximum-size 0) 
+
 (add-hook 'after-init-hook 'global-company-mode)
 
 (global-set-key (kbd "C-c u") (lambda (&optional arg) (interactive "P") (move-beginning-of-line arg) (kill-line)))`

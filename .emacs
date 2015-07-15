@@ -110,7 +110,7 @@
 (require 'projectile)
 (projectile-global-mode)
 (global-set-key (kbd "C-x f") 'helm-projectile)
-(setq projectile-enable-caching t)
+(setq projectile-enable-caching nil)
 
 (setq projectile-completion-system 'helm)
 (setq projectile-switch-project-action 'helm-projectile)

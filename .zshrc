@@ -51,11 +51,6 @@ ZSH_THEME="obraun"
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(git)
 
-# User configuration
-
-export PATH="/home/andrerocker/.rvm/gems/ruby-2.2.2/bin:/home/andrerocker/.rvm/gems/ruby-2.2.2@global/bin:/home/andrerocker/.rvm/rubies/ruby-2.2.2/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/home/andrerocker/.rvm/bin:/home/andrerocker/.rvm/bin:/home/andrerocker/.rvm/bin"
-# export MANPATH="/usr/local/man:$MANPATH"
-
 source $ZSH/oh-my-zsh.sh
 
 # You may need to manually set your language environment

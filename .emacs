@@ -10,7 +10,7 @@
  '(initial-frame-alist (quote ((fullscreen . maximized))))
  '(package-selected-packages
    (quote
-    (company nyan-mode helm-fuzzy-find helm-projectile helm-ag helm projectile magit solarized-theme))))
+    (neotree company nyan-mode helm-fuzzy-find helm-projectile helm-ag helm projectile magit solarized-theme))))
 
 
 ;;
@@ -27,7 +27,7 @@
 (menu-bar-mode -99)
 (tool-bar-mode -1)
 (scroll-bar-mode -1)
-(set-face-attribute 'default nil :height 100)
+(set-face-attribute 'default nil :height 120)
 
 (add-hook 'prog-mode-hook 'linum-mode)
 (setq linum-format "%4d ")
@@ -158,7 +158,7 @@
 (nyan-mode)
 
 (global-set-key (kbd "C-x C-a") '(lambda ()(interactive)(ansi-term "/bin/zica")))
-(setq term-buffer-maximum-size 0) 
+(setq term-buffer-maximum-size 10000) 
 
 (add-hook 'after-init-hook 'global-company-mode)
 

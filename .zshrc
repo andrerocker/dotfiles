@@ -78,5 +78,6 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
+source "$HOME/.rvm/scripts/rvm"
+source /home/andrerocker/.gvm/scripts/gvm
 export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting

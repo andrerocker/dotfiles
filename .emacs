@@ -10,7 +10,7 @@
  '(initial-frame-alist (quote ((fullscreen . maximized))))
  '(package-selected-packages
    (quote
-    (ag company nyan-mode helm-fuzzy-find helm-projectile helm-ag helm projectile magit solarized-theme))))
+    (ag go-mode neotree company nyan-mode helm-fuzzy-find helm-projectile helm-ag helm projectile magit solarized-theme))))
 
 
 ;;
@@ -27,7 +27,7 @@
 (menu-bar-mode -99)
 (tool-bar-mode -1)
 (scroll-bar-mode -1)
-(set-face-attribute 'default nil :height 100)
+(set-face-attribute 'default nil :height 120)
 
 (add-hook 'prog-mode-hook 'linum-mode)
 (setq linum-format "%4d ")

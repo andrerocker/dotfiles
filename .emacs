@@ -10,7 +10,7 @@
  '(initial-frame-alist (quote ((fullscreen . maximized))))
  '(package-selected-packages
    (quote
-    (company nyan-mode helm-fuzzy-find helm-projectile helm-ag helm projectile magit solarized-theme))))
+    (ag company nyan-mode helm-fuzzy-find helm-projectile helm-ag helm projectile magit solarized-theme))))
 
 
 ;;

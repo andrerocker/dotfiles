@@ -9,8 +9,7 @@
     ("d677ef584c6dfc0697901a44b885cc18e206f05114c8a3b7fde674fce6180879" "8aebf25556399b58091e533e455dd50a6a9cba958cc4ebb0aab175863c25b9a4" "a8245b7cc985a0610d71f9852e9f2767ad1b852c2bdea6f4aadc12cce9c4d6d0" default)))
  '(package-selected-packages
    (quote
-    (ag go-mode neotree company nyan-mode helm-fuzzy-find helm-projectile helm-ag helm projectile magit solarized-theme))))
-
+    (whitespace-cleanup-mode ag go-mode neotree company nyan-mode helm-fuzzy-find helm-projectile helm-ag helm projectile magit solarized-theme))))
 
 ;;
 ;; Emacs custom appearence settings
@@ -118,6 +117,7 @@
 (nyan-mode)
 
 (add-hook 'after-init-hook 'global-company-mode)
+(add-hook 'ruby-mode-hook 'whitespace-cleanup-mode)
 
 (defun fullscreen ()
        (interactive)

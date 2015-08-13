@@ -7,7 +7,6 @@
  '(custom-safe-themes
    (quote
     ("d677ef584c6dfc0697901a44b885cc18e206f05114c8a3b7fde674fce6180879" "8aebf25556399b58091e533e455dd50a6a9cba958cc4ebb0aab175863c25b9a4" "a8245b7cc985a0610d71f9852e9f2767ad1b852c2bdea6f4aadc12cce9c4d6d0" default)))
- '(initial-frame-alist (quote ((fullscreen . maximized))))
  '(package-selected-packages
    (quote
     (ag go-mode neotree company nyan-mode helm-fuzzy-find helm-projectile helm-ag helm projectile magit solarized-theme))))
@@ -27,7 +26,7 @@
 (menu-bar-mode -99)
 (tool-bar-mode -1)
 (scroll-bar-mode -1)
-(set-face-attribute 'default nil :height 120)
+(set-face-attribute 'default nil :height 100)
 
 (add-hook 'prog-mode-hook 'linum-mode)
 (setq linum-format "%4d ")
@@ -117,47 +116,8 @@
 (setq helm-projectile-sources-list '(helm-source-projectile-buffers-list
 				     helm-source-projectile-files-list))
 
-;; Stolen from mimi
-
-(defvar rr/project-sources
-  '("~/andre/work/andrerocker/"
-    "~/andre/work/locaweb/"))
-
-(defvar rr/default-file-regexps
-  '("Gemfile$"
-    "README"))
-
-(defun rr/helm-open-project ()
-  "Bring up a Project search interface in helm."
-  (interactive)
-  (helm :sources '(rr/helm-open-project--source)
-	:buffer "*helm-list-projects*"))
-
-(defvar rr/helm-open-project--source
-  '((name . "Open Project")
-    (delayed)
-    (candidates . rr/list-projects)
-    (action . rr/open-project)))
-
-(defun rr/list-projects ()
-  "Lists all projects given project sources."
-  (->> rr/project-sources
-       (-filter 'file-exists-p)
-       (-mapcat (lambda (dir) (directory-files dir t directory-files-no-dot-files-regexp)))))
-
-(defun rr/open-project (path)
-  "Open project available at PATH."
-  (let* ((candidates (-mapcat (lambda (d) (directory-files path t d)) rr/default-file-regexps))
-         (elected (car candidates)))
-    (find-file (or elected path))))
-
-;; (defvar default-project-source
-;;  (path-join *user-home-directory* "andre/work"))
-
 (require 'nyan-mode)
 (nyan-mode)
-
-(global-set-key (kbd "C-x C-a") '(lambda ()(interactive)(ansi-term "/bin/zica")))
 
 (add-hook 'after-init-hook 'global-company-mode)
 
@@ -166,13 +126,8 @@
        (x-send-client-message nil 0 nil "_NET_WM_STATE" 32
                  '(2 "_NET_WM_STATE_FULLSCREEN" 0)))
 
-(global-set-key (kbd "C-c u") (lambda (&optional arg) (interactive "P") (move-beginning-of-line arg) (kill-line)))`
-
-(add-hook 'before-save-hook
-          (lambda ()
-            (when (not (derived-mode-p 'markdown-mode))
-              (delete-trailing-whitespace))))
-
-
+(global-set-key (kbd "C-c u") (lambda (&optional arg) (interactive "P") (move-beginning-of-line arg) (kill-line)))
+(global-set-key (kbd "C-x C-a") '(lambda ()(interactive)(ansi-term "/bin/zica")))
 (global-set-key (kbd "C-x C-.") 'helm-M-x)
 (global-set-key (kbd "C-x C-,") 'fullscreen)
+(global-set-key (kbd "C-x /") 'rename-buffer)

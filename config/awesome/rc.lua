@@ -229,6 +229,7 @@ globalkeys = awful.util.table.join(
     -- Standard program
     awful.key({ modkey,           }, "Return", function () awful.util.spawn(terminal) end),
     awful.key({ modkey,           }, "space", function () awful.util.spawn("/usr/bin/synapse") end),
+    awful.key({ modkey,           }, "e", function () awful.util.spawn("/usr/bin/ssh-agent emacs") end),    
     awful.key({ modkey, "Control" }, "r", awesome.restart),
     awful.key({ modkey, "Shift"   }, "q", awesome.quit),
 

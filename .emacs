@@ -94,9 +94,7 @@
 (require 'helm-config)
 (helm-mode t)
 
-(global-set-key (kbd "M-x") 'helm-M-x)
-(global-set-key (kbd "C-x C-b") 'helm-buffers-list)
-(global-set-key (kbd "C-x C-f") 'helm-find-files)
+
 
 (setq helm-quick-update t)
 (setq helm-buffers-fuzzy-matching t)
@@ -126,8 +124,11 @@
        (x-send-client-message nil 0 nil "_NET_WM_STATE" 32
                  '(2 "_NET_WM_STATE_FULLSCREEN" 0)))
 
+(global-set-key (kbd "M-x") 'helm-M-x)
+(global-set-key (kbd "C-x C-.") 'helm-M-x)
+(global-set-key (kbd "C-x C-b") 'helm-buffers-list)
+(global-set-key (kbd "C-x C-f") 'helm-find-files)
 (global-set-key (kbd "C-c u") (lambda (&optional arg) (interactive "P") (move-beginning-of-line arg) (kill-line)))
 (global-set-key (kbd "C-x C-a") '(lambda ()(interactive)(ansi-term "/bin/zica")))
-(global-set-key (kbd "C-x C-.") 'helm-M-x)
 (global-set-key (kbd "C-x C-,") 'fullscreen)
 (global-set-key (kbd "C-x /") 'rename-buffer)

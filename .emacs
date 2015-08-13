@@ -116,9 +116,6 @@
 (require 'nyan-mode)
 (nyan-mode)
 
-(add-hook 'after-init-hook 'global-company-mode)
-(add-hook 'ruby-mode-hook 'whitespace-cleanup-mode)
-
 (defun fullscreen ()
        (interactive)
        (x-send-client-message nil 0 nil "_NET_WM_STATE" 32
@@ -132,3 +129,11 @@
 (global-set-key (kbd "C-x C-a") '(lambda ()(interactive)(ansi-term "/bin/zica")))
 (global-set-key (kbd "C-x C-,") 'fullscreen)
 (global-set-key (kbd "C-x /") 'rename-buffer)
+
+(defun default-buffer ()
+  (ansi-term "/bin/zica")
+  (rename-buffer "etc-term"))
+
+(add-hook 'ruby-mode-hook 'whitespace-cleanup-mode)
+(add-hook 'after-init-hook 'global-company-mode)
+(default-buffer)

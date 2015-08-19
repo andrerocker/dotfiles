@@ -9,7 +9,7 @@
     ("d677ef584c6dfc0697901a44b885cc18e206f05114c8a3b7fde674fce6180879" "8aebf25556399b58091e533e455dd50a6a9cba958cc4ebb0aab175863c25b9a4" "a8245b7cc985a0610d71f9852e9f2767ad1b852c2bdea6f4aadc12cce9c4d6d0" default)))
  '(package-selected-packages
    (quote
-    (lua-mode whitespace-cleanup-mode ag go-mode neotree company nyan-mode helm-fuzzy-find helm-projectile helm-ag helm projectile magit solarized-theme))))
+    (clojure-mode yaml-mode lua-mode whitespace-cleanup-mode ag go-mode neotree company nyan-mode helm-fuzzy-find helm-projectile helm-ag helm projectile magit solarized-theme))))
 
 ;;
 ;; Emacs custom appearence settings
@@ -25,7 +25,7 @@
 (menu-bar-mode -99)
 (tool-bar-mode -1)
 (scroll-bar-mode -1)
-(set-face-attribute 'default nil :height 100)
+(set-face-attribute 'default nil :height 120)
 
 (add-hook 'prog-mode-hook 'linum-mode)
 (setq linum-format "%4d ")
@@ -59,7 +59,57 @@
 (add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/") t)
 
 (defvar my-packages
-  '(solarized-theme magit projectile helm helm-ag helm-projectile helm-fuzzy-find nyan-mode company))
+  '(clojure-mode yaml-mode lua-mode whitespace-cleanup-mode ag go-mode neotree company nyan-mode helm-fuzzy-find helm-projectile helm-ag helm projectile magit solarized-theme))
+
+;;
+;; Emacs custom appearence settings
+;;
+
+(setq
+  inhibit-splash-screen t
+  inhibit-startup-message t
+  column-number-mode t
+  ring-bell-function 'ignore
+  redisplay-dont-pause t)
+
+(menu-bar-mode -99)
+(tool-bar-mode -1)
+(scroll-bar-mode -1)
+(set-face-attribute 'default nil :height 120)
+
+(add-hook 'prog-mode-hook 'linum-mode)
+(setq linum-format "%4d ")
+(winner-mode 1)
+(fset 'yes-or-no-p 'y-or-n-p)
+
+(setq
+ ;; default directory
+ default-directory (concat (getenv "HOME") "/andre/work/")
+
+ ;; disable backup files
+ make-backup-files nil
+ auto-save-default nil
+ backup-inhibited t
+
+ ;; If a frame alredy opened, use it!
+ display-buffer-reuse-frames t
+)
+
+;; make indentation commands use space only
+(setq-default indent-tabs-mode nil)
+
+(setq explicit-shell-file-name "/bin/zica")
+(display-time-mode)
+
+;;
+;; Packages Settings
+;;
+
+(require 'package)
+(add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/") t)
+
+(defvar my-packages
+  '(lua-mode whitespace-cleanup-mode ag go-mode neotree company nyan-mode helm-fuzzy-find helm-projectile helm-ag helm projectile magit solarized-theme))
 
 (package-initialize)
 (custom-set-faces
@@ -85,15 +135,12 @@
 (load-theme 'solarized-dark)
 (setq magit-last-seen-setup-instructions "1.4.0")
 
-
 ;;
 ;; Custom Plugin Settings
 ;;
 
 (require 'helm-config)
 (helm-mode t)
-
-
 
 (setq helm-quick-update t)
 (setq helm-buffers-fuzzy-matching t)

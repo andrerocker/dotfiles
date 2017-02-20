@@ -9,7 +9,7 @@
     ("d677ef584c6dfc0697901a44b885cc18e206f05114c8a3b7fde674fce6180879" "8aebf25556399b58091e533e455dd50a6a9cba958cc4ebb0aab175863c25b9a4" "a8245b7cc985a0610d71f9852e9f2767ad1b852c2bdea6f4aadc12cce9c4d6d0" default)))
  '(package-selected-packages
    (quote
-    (clojure-mode yaml-mode lua-mode whitespace-cleanup-mode ag go-mode neotree company nyan-mode helm-fuzzy-find helm-projectile helm-ag helm projectile magit solarized-theme))))
+    (ac-cider scala-mode buffer-sets paredit json-reformat rainbow-identifiers nyan-prompt rainbow-blocks cider 4clojure clojure-mode yaml-mode lua-mode whitespace-cleanup-mode ag go-mode neotree company nyan-mode helm-fuzzy-find helm-projectile helm-ag helm projectile magit solarized-theme))))
 
 ;;
 ;; Emacs custom appearence settings
@@ -34,7 +34,7 @@
 
 (setq
  ;; default directory
- default-directory (concat (getenv "HOME") "/andre/work/")
+ default-directory (concat (getenv "HOME"))
 
  ;; disable backup files
  make-backup-files nil
@@ -177,10 +177,28 @@
 (global-set-key (kbd "C-x C-,") 'fullscreen)
 (global-set-key (kbd "C-x /") 'rename-buffer)
 
+;; Use emacs terminfo, not system terminfo
+(setq system-uses-terminfo nil)
+
+;; Use utf-8 in ansi-term
+(defadvice ansi-term (after advise-ansi-term-coding-system)
+	       (set-buffer-process-coding-system 'utf-8-unix 'utf-8-unix))
+(ad-activate 'ansi-term)
+
 (defun default-buffer ()
   (ansi-term "/bin/zica")
   (rename-buffer "etc-term"))
 
 (add-hook 'ruby-mode-hook 'whitespace-cleanup-mode)
 (add-hook 'after-init-hook 'global-company-mode)
+
+(require 'auto-complete-config)
+(setq ac-delay 0.0)
+(setq ac-quick-help-delay 0.5)
+(ac-config-default)
+
+(show-paren-mode 1)
+
 (default-buffer)
+
+

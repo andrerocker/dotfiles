@@ -17,7 +17,7 @@ os.execute("setxkbmap -model abnt2 -layout br -variant abnt2")
 -- os.execute("wmname \"LG3D\"") -- to solve weird java behevour
 awful.util.spawn_with_shell("xscreensaver -nosplash")
 awful.util.spawn_with_shell("chromium")
-awful.util.spawn_with_shell("bash -lc 'ssh-agent emacs --daemon'")
+awful.util.spawn_with_shell("bash -lc 'ssh-agent emacs'")
 
 -- {{{ Error handling
 -- Check if awesome encountered an error during startup and fell back to
@@ -50,7 +50,7 @@ beautiful.init(awful.util.get_themes_dir() .. "default/theme.lua")
 
 -- This is used later as the default terminal and editor to run.
 terminal = "xterm"
-editor = os.getenv("EDITOR") or "emacsclient"
+editor = os.getenv("EDITOR") or "emacs"
 editor_cmd = terminal .. " -e " .. editor
 
 -- Default modkey.
@@ -280,7 +280,7 @@ awful.key({ modkey, "Shift"   }, "q", awesome.quit,
 
 awful.key({ modkey,           }, "Return", function () awful.util.spawn(terminal) end),
 awful.key({ modkey,           }, "space", function () awful.util.spawn("/usr/bin/synapse") end),
-    awful.key({ modkey,           }, "e", function () awful.util.spawn("/usr/bin/emacsclient -n -c") end), 
+    awful.key({ modkey,           }, "e", function () awful.util.spawn("/usr/bin/emacs") end), 
 
 
 awful.key({ modkey,           }, "l",     function () awful.tag.incmwfact( 0.05)          end,

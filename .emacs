@@ -25,7 +25,7 @@
 (menu-bar-mode -99)
 (tool-bar-mode -1)
 (scroll-bar-mode -1)
-(set-face-attribute 'default nil :height 120)
+(set-face-attribute 'default nil :height 80 :family "Monaco")
 
 (add-hook 'prog-mode-hook 'linum-mode)
 (setq linum-format "%4d ")
@@ -75,7 +75,6 @@
 (menu-bar-mode -99)
 (tool-bar-mode -1)
 (scroll-bar-mode -1)
-(set-face-attribute 'default nil :height 120)
 
 (add-hook 'prog-mode-hook 'linum-mode)
 (setq linum-format "%4d ")

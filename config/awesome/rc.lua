@@ -24,8 +24,8 @@ awful.util.spawn_with_shell("bash -lc 'ssh-agent emacs'")
 -- another config (This code will only ever execute for the fallback config)
 if awesome.startup_errors then
 naughty.notify({ preset = naughty.config.presets.critical,
-	     title = "Oops, there were errors during startup!",
-	     text = awesome.startup_errors })
+             title = "Oops, there were errors during startup!",
+             text = awesome.startup_errors })
 end
 
 -- Handle runtime errors after startup
@@ -37,8 +37,8 @@ if in_error then return end
 in_error = true
 
 naughty.notify({ preset = naughty.config.presets.critical,
-		 title = "Oops, an error happened!",
-		 text = tostring(err) })
+                 title = "Oops, an error happened!",
+                 text = tostring(err) })
 in_error = false
 end)
 end
@@ -92,12 +92,12 @@ myawesomemenu = {
 }
 
 mymainmenu = awful.menu({ items = { { "awesome", myawesomemenu, beautiful.awesome_icon },
-			    { "open terminal", terminal }
-			  }
-		})
+                            { "open terminal", terminal }
+                          }
+                })
 
 mylauncher = awful.widget.launcher({ image = beautiful.awesome_icon,
-			     menu = mymainmenu })
+                             menu = mymainmenu })
 
 -- Menubar configuration
 menubar.utils.terminal = terminal -- Set the terminal for applications that require it
@@ -112,46 +112,46 @@ mytextclock = wibox.widget.textclock()
 
 -- Create a wibox for each screen and add it
 local taglist_buttons = awful.util.table.join(
-	    awful.button({ }, 1, function(t) t:view_only() end),
-	    awful.button({ modkey }, 1, function(t)
-				      if client.focus then
-					  client.focus:move_to_tag(t)
-				      end
-				  end),
-	    awful.button({ }, 3, awful.tag.viewtoggle),
-	    awful.button({ modkey }, 3, function(t)
-				      if client.focus then
-					  client.focus:toggle_tag(t)
-				      end
-				  end),
-	    awful.button({ }, 4, function(t) awful.tag.viewnext(t.screen) end),
-	    awful.button({ }, 5, function(t) awful.tag.viewprev(t.screen) end)
-	)
+            awful.button({ }, 1, function(t) t:view_only() end),
+            awful.button({ modkey }, 1, function(t)
+                                      if client.focus then
+                                          client.focus:move_to_tag(t)
+                                      end
+                                  end),
+            awful.button({ }, 3, awful.tag.viewtoggle),
+            awful.button({ modkey }, 3, function(t)
+                                      if client.focus then
+                                          client.focus:toggle_tag(t)
+                                      end
+                                  end),
+            awful.button({ }, 4, function(t) awful.tag.viewnext(t.screen) end),
+            awful.button({ }, 5, function(t) awful.tag.viewprev(t.screen) end)
+        )
 
 local tasklist_buttons = awful.util.table.join(
-	     awful.button({ }, 1, function (c)
-				      if c == client.focus then
-					  c.minimized = true
-				      else
-					  -- Without this, the following
-					  -- :isvisible() makes no sense
-					  c.minimized = false
-					  if not c:isvisible() and c.first_tag then
-					      c.first_tag:view_only()
-					  end
-					  -- This will also un-minimize
-					  -- the client, if needed
-					  client.focus = c
-					  c:raise()
-				      end
-				  end),
-	     awful.button({ }, 3, client_menu_toggle_fn()),
-	     awful.button({ }, 4, function ()
-				      awful.client.focus.byidx(1)
-				  end),
-	     awful.button({ }, 5, function ()
-				      awful.client.focus.byidx(-1)
-				  end))
+             awful.button({ }, 1, function (c)
+                                      if c == client.focus then
+                                          c.minimized = true
+                                      else
+                                          -- Without this, the following
+                                          -- :isvisible() makes no sense
+                                          c.minimized = false
+                                          if not c:isvisible() and c.first_tag then
+                                              c.first_tag:view_only()
+                                          end
+                                          -- This will also un-minimize
+                                          -- the client, if needed
+                                          client.focus = c
+                                          c:raise()
+                                      end
+                                  end),
+             awful.button({ }, 3, client_menu_toggle_fn()),
+             awful.button({ }, 4, function ()
+                                      awful.client.focus.byidx(1)
+                                  end),
+             awful.button({ }, 5, function ()
+                                      awful.client.focus.byidx(-1)
+                                  end))
 
 local function set_wallpaper(s)
 -- Wallpaper
@@ -181,10 +181,10 @@ s.mypromptbox = awful.widget.prompt()
 -- We need one layoutbox per screen.
 s.mylayoutbox = awful.widget.layoutbox(s)
 s.mylayoutbox:buttons(awful.util.table.join(
-		   awful.button({ }, 1, function () awful.layout.inc( 1) end),
-		   awful.button({ }, 3, function () awful.layout.inc(-1) end),
-		   awful.button({ }, 4, function () awful.layout.inc( 1) end),
-		   awful.button({ }, 5, function () awful.layout.inc(-1) end)))
+                   awful.button({ }, 1, function () awful.layout.inc( 1) end),
+                   awful.button({ }, 3, function () awful.layout.inc(-1) end),
+                   awful.button({ }, 4, function () awful.layout.inc( 1) end),
+                   awful.button({ }, 5, function () awful.layout.inc(-1) end)))
 -- Create a taglist widget
 s.mytaglist = awful.widget.taglist(s, awful.widget.taglist.filter.all, taglist_buttons)
 
@@ -262,10 +262,10 @@ awful.key({ modkey,           }, "u", awful.client.urgent.jumpto,
       {description = "jump to urgent client", group = "client"}),
 awful.key({ modkey,           }, "Tab",
 function ()
-	 awful.client.focus.byidx(1)
+         awful.client.focus.byidx(1)
     -- awful.client.focus.history.previous()
     if client.focus then
-	client.focus:raise()
+        client.focus:raise()
     end
 end,
 {description = "go back", group = "client"}),
@@ -280,13 +280,15 @@ awful.key({ modkey, "Shift"   }, "q", awesome.quit,
 
 awful.key({ modkey,           }, "Return", function () awful.util.spawn(terminal) end),
 awful.key({ modkey,           }, "space", function () awful.util.spawn("/usr/bin/synapse") end),
-    awful.key({ modkey,           }, "e", function () awful.util.spawn("/usr/bin/emacs") end), 
+awful.key({ modkey,           }, "e", function () awful.util.spawn("/usr/bin/emacs") end),
+awful.key({ modkey,           }, "y", function () awful.util.spawn("/usr/bin/spotify") end),
+awful.key({ modkey,           }, "t", function () awful.util.spawn("/usr/bin/tomate-gtk") end),
 
 
 awful.key({ modkey,           }, "l",     function () awful.tag.incmwfact( 0.05)          end,
       {description = "increase master width factor", group = "layout"}),
 
-	awful.key({ modkey, "Control" }, "l", function () awful.util.spawn("xscreensaver-command -lock") end),
+        awful.key({ modkey, "Control" }, "l", function () awful.util.spawn("xscreensaver-command -lock") end),
 awful.key({ modkey,           }, "h",     function () awful.tag.incmwfact(-0.05)          end,
       {description = "decrease master width factor", group = "layout"}),
 awful.key({ modkey, "Shift"   }, "h",     function () awful.tag.incnmaster( 1, nil, true) end,

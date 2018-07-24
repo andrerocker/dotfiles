@@ -4,4 +4,3 @@
 * tmux
 * urxvt
 * awesome
-

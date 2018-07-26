@@ -12,7 +12,7 @@ local menubar = require("menubar")
 local hotkeys_popup = require("awful.hotkeys_popup").widget
 
 -- Custom Stuff
-os.execute("setxkbmap -model abnt2 -layout br -variant abnt2")
+-- os.execute("setxkbmap -model abnt2 -layout br -variant abnt2")
 -- -- os.execute("setxkbmap us -variant intl")
 -- os.execute("wmname \"LG3D\"") -- to solve weird java behevour
 awful.util.spawn_with_shell("xscreensaver -nosplash")
@@ -281,8 +281,9 @@ awful.key({ modkey, "Shift"   }, "q", awesome.quit,
 awful.key({ modkey,           }, "Return", function () awful.util.spawn(terminal) end),
 awful.key({ modkey,           }, "space", function () awful.util.spawn("/usr/bin/synapse") end),
 awful.key({ modkey,           }, "e", function () awful.util.spawn("/usr/bin/emacs") end),
-awful.key({ modkey,           }, "y", function () awful.util.spawn("/usr/bin/spotify") end),
 awful.key({ modkey,           }, "t", function () awful.util.spawn("/usr/bin/tomate-gtk") end),
+awful.key({ modkey,           }, "y", function () awful.util.spawn("/usr/bin/spotify") end),
+awful.key({ modkey,           }, "a", function () awful.util.spawn("/usr/bin/arandr") end),
 
 
 awful.key({ modkey,           }, "l",     function () awful.tag.incmwfact( 0.05)          end,

@@ -284,6 +284,7 @@ awful.key({ modkey,           }, "e", function () awful.util.spawn("/usr/bin/ema
 awful.key({ modkey,           }, "t", function () awful.util.spawn("/usr/bin/tomate-gtk") end),
 awful.key({ modkey,           }, "y", function () awful.util.spawn("/usr/bin/spotify") end),
 awful.key({ modkey,           }, "a", function () awful.util.spawn("/usr/bin/arandr") end),
+awful.key({ modkey,           }, "k", function () awful.util.spawn("/usr/bin/yubioath-desktop") end),
 
 
 awful.key({ modkey,           }, "l",     function () awful.tag.incmwfact( 0.05)          end,

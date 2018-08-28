@@ -9,7 +9,7 @@
     ("d677ef584c6dfc0697901a44b885cc18e206f05114c8a3b7fde674fce6180879" "8aebf25556399b58091e533e455dd50a6a9cba958cc4ebb0aab175863c25b9a4" "a8245b7cc985a0610d71f9852e9f2767ad1b852c2bdea6f4aadc12cce9c4d6d0" default)))
  '(package-selected-packages
    (quote
-    (dockerfile-mode git-timemachine zone-nyan midje-mode ac-cider scala-mode buffer-sets paredit json-reformat rainbow-identifiers nyan-prompt rainbow-blocks cider 4clojure clojure-mode yaml-mode lua-mode whitespace-cleanup-mode ag go-mode neotree company nyan-mode helm-fuzzy-find helm-projectile helm-ag helm projectile magit solarized-theme))))
+    (fancy-battery dockerfile-mode git-timemachine zone-nyan midje-mode ac-cider scala-mode buffer-sets paredit json-reformat rainbow-identifiers nyan-prompt rainbow-blocks cider 4clojure clojure-mode yaml-mode lua-mode whitespace-cleanup-mode ag go-mode neotree company nyan-mode helm-fuzzy-find helm-projectile helm-ag helm projectile magit solarized-theme))))
 
 ;;
 ;; Emacs custom appearence settings
@@ -25,7 +25,7 @@
 (menu-bar-mode -99)
 (tool-bar-mode -1)
 (scroll-bar-mode -1)
-(set-face-attribute 'default nil :height 80 :family "Monaco")
+(set-face-attribute 'default nil :height 120 :family "Monaco")
 
 (add-hook 'prog-mode-hook 'linum-mode)
 (setq linum-format "%4d ")
@@ -159,6 +159,8 @@
 (setq helm-projectile-sources-list '(helm-source-projectile-buffers-list
 				     helm-source-projectile-files-list))
 
+(define-key projectile-mode-map (kbd "C-c p") 'projectile-command-map)
+
 (require 'nyan-mode)
 (nyan-mode)
 
@@ -201,3 +203,5 @@
 (default-buffer)
 
 (add-hook 'after-init-hook #'fancy-battery-mode)
+
+

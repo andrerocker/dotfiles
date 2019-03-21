@@ -18,6 +18,7 @@ os.execute("setxkbmap -model abnt2 -layout br -variant abnt2")
 awful.util.spawn_with_shell("xscreensaver -nosplash")
 awful.util.spawn_with_shell("chromium")
 awful.util.spawn_with_shell("/usr/bin/gpg-emacs")
+awful.util.spawn_with_shell("/home/andrerocker/.screenlayout/three-monitors.sh")
 
 -- {{{ Error handling
 -- Check if awesome encountered an error during startup and fell back to

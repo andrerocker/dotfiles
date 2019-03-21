@@ -1,6 +1,7 @@
 [user]
 	name  = andrerocker
 	email = andre.souza@gmail.com
+	signingkey = 0x0ECEE6DE1777528B
 
 [alias]
 	br = branch
@@ -15,6 +16,7 @@
 	tree = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset' --abbrev-commit --date=relative
 	today = !git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset' --abbrev-commit --date=relative --since=$(date --rfc-3339=date --date=yesterday)
 	unadd = reset HEAD --
+        logs = log --show-signature
 
 [apply]
 	whitespace=fix
@@ -36,3 +38,6 @@
 
 [push]
 	default = matching
+
+[commit]
+    gpgsign = true

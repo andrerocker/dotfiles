@@ -84,3 +84,8 @@ export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
 # GPG Configs
 export SSH_AUTH_SOCK="/run/user/$UID/gnupg/S.gpg-agent.ssh"
 gpg-connect-agent updatestartuptty /bye > /dev/null
+
+source $HOME/.nurc
+
+export PATH=$PATH:/opt/extras/flutter/bin
+export PATH=$PATH:/opt/extras/android-studio/bin

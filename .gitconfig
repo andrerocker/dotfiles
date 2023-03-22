@@ -1,7 +1,6 @@
 [user]
 	name  = andrerocker
 	email = andre.souza@gmail.com
-	signingkey = 0x0ECEE6DE1777528B
 
 [alias]
 	br = branch
@@ -38,6 +37,5 @@
 
 [push]
 	default = matching
-
-[commit]
-    gpgsign = true
+[url "git@github.com:"]
+	insteadOf = https://github.com/

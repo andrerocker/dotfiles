@@ -1,0 +1,111 @@
+(custom-set-variables
+ '(package-selected-packages '())
+ '(wakatime-api-key (getenv "WAKATIME_KEY"))
+ '(wakatime-cli-path (concat (getenv "HOME") "/.wakatime/wakatime-cli")))
+
+(setq
+  inhibit-splash-screen t
+  inhibit-startup-message t
+  column-number-mode t
+  ring-bell-function 'ignore
+  redisplay-dont-pause t)
+
+(menu-bar-mode -99)
+(tool-bar-mode -1)
+(scroll-bar-mode -1)
+(set-face-attribute 'default nil :height 110 :family "Monaco")
+
+(setq
+ default-directory (concat (getenv "HOME"))
+ make-backup-files nil
+ auto-save-default nil
+ backup-inhibited t
+ display-buffer-reuse-frames t)
+
+(setq-default indent-tabs-mode nil)
+
+(setq explicit-shell-file-name "/bin/zica")
+
+(require 'package)
+(add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/") t)
+
+(defvar my-packages
+  '(ag
+    helm
+    helm-ag
+    helm-fuzzy-find
+    helm-projectile
+    magit
+    nyan-mode
+    projectile
+    solarized-theme
+    whitespace-cleanup-mode))
+
+(package-initialize)
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
+
+(setq packaged-contents-refreshed-p nil)
+(dolist (p my-packages)
+  (when (not (package-installed-p p))
+    (condition-case ex
+  (package-install p)
+  ('error (if packaged-contents-refreshed-p
+      (error ex)
+    (package-refresh-contents)
+    (setq packaged-contents-refreshed-p t)
+    (package-install p))))))
+
+;; (setq custom-safe-themes t)
+(load-theme 'solarized-gruvbox-dark t)
+
+(require 'helm-config)
+(helm-mode t)
+
+(setq helm-quick-update t)
+(setq helm-buffers-fuzzy-matching t)
+
+(require 'magit)
+(setq magit-last-seen-setup-instructions "1.4.0")
+(global-set-key (kbd "C-c g") 'magit-status)
+(global-set-key (kbd "M-g c") 'magit-checkout)
+
+(require 'projectile)
+(projectile-global-mode)
+(global-set-key (kbd "C-x f") 'helm-projectile)
+(setq projectile-enable-caching t)
+
+(setq projectile-completion-system 'helm)
+(setq projectile-switch-project-action 'helm-projectile)
+(setq helm-projectile-sources-list '(helm-source-projectile-buffers-list
+                                     helm-source-projectile-files-list))
+
+(define-key projectile-mode-map (kbd "C-c p") 'projectile-command-map)
+
+(require 'nyan-mode)
+(nyan-mode)
+
+(defun fullscreen ()
+       (interactive)
+       (x-send-client-message nil 0 nil "_NET_WM_STATE" 32
+                 '(2 "_NET_WM_STATE_FULLSCREEN" 0)))
+
+(global-set-key (kbd "M-x") 'helm-M-x)
+(global-set-key (kbd "C-x C-.") 'helm-M-x)
+(global-set-key (kbd "C-x C-b") 'helm-buffers-list)
+(global-set-key (kbd "C-x C-f") 'helm-find-files)
+(global-set-key (kbd "C-c u") (lambda (&optional arg) (interactive "P") (move-beginning-of-line arg) (kill-line)))
+(global-set-key (kbd "C-x C-a") '(lambda ()(interactive)(ansi-term "/bin/zica")))
+(global-set-key (kbd "C-x C-,") 'fullscreen)
+(global-set-key (kbd "C-x /") 'rename-buffer)
+
+(defun ansiterm-default-buffer ()
+  (ansi-term "/bin/zica")
+  (rename-buffer "etc-term"))
+
+(ansiterm-default-buffer)
+(global-wakatime-mode)

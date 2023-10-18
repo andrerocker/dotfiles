@@ -1,4 +1,4 @@
-(custom-set-variables
+custom-set-variables
  '(package-selected-packages '())
  '(wakatime-api-key (getenv "WAKATIME_KEY"))
  '(wakatime-cli-path (concat (getenv "HOME") "/.wakatime/wakatime-cli")))
@@ -63,7 +63,7 @@
 ;; (setq custom-safe-themes t)
 (load-theme 'solarized-gruvbox-dark t)
 
-(require 'helm-config)
+;; (require 'helm-config)
 (helm-mode t)
 
 (setq helm-quick-update t)

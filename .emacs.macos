@@ -1,0 +1,137 @@
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(custom-safe-themes
+   '("fee7287586b17efbfda432f05539b58e86e059e78006ce9237b8732fde991b4c" default))
+ '(package-selected-packages
+   '(csproj-mode vterm go-mode go dockerfile-mode docker yaml-mode paredit company flycheck lsp-treemacs lsp-mode inf-clojure helm-cider cider whitespace-cleanup-mode solarized-theme nyan-mode magit helm-projectile helm-fuzzy-find helm-ag ag))
+ '(wakatime-api-key (getenv "WAKATIME_KEY"))
+ '(wakatime-cli-path (concat (getenv "HOME") "/.wakatime/wakatime-cli")))
+
+(setq
+  inhibit-splash-screen t
+  inhibit-startup-message t
+  column-number-mode t
+  ring-bell-function 'ignore
+  redisplay-dont-pause t)
+
+(menu-bar-mode -99)
+(tool-bar-mode -1)
+(scroll-bar-mode -1)
+(set-face-attribute 'default nil :height 150 :family "Monaco")
+
+(global-set-key [home] 'beginning-of-line)
+(global-set-key [end] 'end-of-line)
+
+(setq
+ default-directory (concat (getenv "HOME"))
+ make-backup-files nil
+ auto-save-default nil
+ backup-inhibited t
+ display-buffer-reuse-frames t)
+
+(setq-default indent-tabs-mode nil)
+
+(setq explicit-shell-file-name "/usr/local/bin/zica")
+
+(require 'package)
+(add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/") t)
+
+(defvar my-packages
+  '(ag
+    helm
+    helm-ag
+    helm-fuzzy-find
+    helm-projectile
+    magit
+    nyan-mode
+    projectile
+    solarized-theme
+    whitespace-cleanup-mode))
+
+(package-initialize)
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
+
+(setq packaged-contents-refreshed-p nil)
+(dolist (p my-packages)
+  (when (not (package-installed-p p))
+    (condition-case ex
+  (package-install p)
+  ('error (if packaged-contents-refreshed-p
+      (error ex)
+    (package-refresh-contents)
+    (setq packaged-contents-refreshed-p t)
+    (package-install p))))))
+
+;; (setq custom-safe-themes t)
+(load-theme 'solarized-gruvbox-dark t)
+
+;; (require 'helm-config)
+(helm-mode t)
+
+(setq helm-quick-update t)
+(setq helm-buffers-fuzzy-matching t)
+
+(require 'magit)
+(setq magit-last-seen-setup-instructions "1.4.0")
+(global-set-key (kbd "C-c g") 'magit-status)
+(global-set-key (kbd "M-g c") 'magit-checkout)
+
+(require 'projectile)
+(projectile-global-mode)
+(global-set-key (kbd "C-x f") 'helm-projectile)
+(setq projectile-enable-caching t)
+
+(setq projectile-completion-system 'helm)
+(setq projectile-switch-project-action 'helm-projectile)
+(setq helm-projectile-sources-list '(helm-source-projectile-buffers-list
+                                     helm-source-projectile-files-list))
+
+(define-key projectile-mode-map (kbd "C-c p") 'projectile-command-map)
+
+(require 'nyan-mode)
+(nyan-mode)
+
+(defun fullscreen ()
+       (interactive)
+       (x-send-client-message nil 0 nil "_NET_WM_STATE" 32
+                 '(2 "_NET_WM_STATE_FULLSCREEN" 0)))
+
+(global-set-key (kbd "M-x") 'helm-M-x)
+(global-set-key (kbd "C-x C-.") 'helm-M-x)
+(global-set-key (kbd "C-x C-b") 'helm-buffers-list)
+(global-set-key (kbd "C-x C-f") 'helm-find-files)
+(global-set-key (kbd "C-c u") (lambda (&optional arg) (interactive "P") (move-beginning-of-line arg) (kill-line)))
+(global-set-key (kbd "C-x C-a") '(lambda ()(interactive)(vterm "/usr/local/bin/zica")))
+(global-set-key (kbd "C-x C-,") 'fullscreen)
+(global-set-key (kbd "C-x /") 'rename-buffer)
+
+(defun ansiterm-default-buffer ()
+  (vterm "/usr/local/bin/zica")
+  (rename-buffer "etc-term"))
+
+(add-hook 'clojure-mode-hook 'lsp)
+(add-hook 'clojure-mode-hook 'enable-paredit-mode)
+
+(add-hook 'clojurescript-mode-hook 'lsp)
+(add-hook 'clojurescript-mode-hook 'enable-paredit-mode)
+
+(add-hook 'clojurec-mode-hook 'lsp)
+(add-hook 'clojurec-mode-hook 'enable-paredit-mode)
+
+(setq gc-cons-threshold (* 100 1024 1024)
+      read-process-output-max (* 1024 1024)
+      treemacs-space-between-root-nodes nil
+      company-minimum-prefix-length 1
+      ; lsp-enable-indentation nil ; uncomment to use cider indentation instead of lsp
+      ; lsp-enable-completion-at-point nil ; uncomment to use cider completion instead of lsp
+      )
+(global-display-line-numbers-mode)
+(ansiterm-default-buffer)
